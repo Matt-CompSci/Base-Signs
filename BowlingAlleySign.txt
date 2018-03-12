@@ -1,0 +1,60 @@
+@name Bowling Alley Sign
+@inputs EGP:wirelink
+@persist Amplitude:number
+@persist PinIDs:array
+
+if(first())
+{
+    entity():createWire(entity():isWeldedTo(), "EGP", "wirelink")
+    EGP:egpClear()
+    
+    function void drawPin(Pos:vector2)
+    {
+        Obj = EGP:egpNumObjects() + 1
+        PinIDs:pushNumber(Obj)
+        
+        EGP:egpCircle(Obj, Pos, vec2(32, 64))
+        
+        Obj++
+        EGP:egpCircle(Obj, vec2(0, -64), vec2(16, 64))
+        EGP:egpParent(Obj, Obj-1)
+        
+        Obj++
+        EGP:egpRoundedBox(Obj, vec2(0, -11), vec2(64, 8))
+        EGP:egpColor(Obj, vec(255, 0, 0))
+        EGP:egpParent(Obj, Obj-2)
+        
+        Obj++
+        EGP:egpRoundedBox(Obj, vec2(0, -26), vec2(64, 8))
+        EGP:egpColor(Obj, vec(255, 0, 0))
+        EGP:egpParent(Obj, Obj-3)
+    }
+    
+    EGP:egpRoundedBox(1, vec2(256, 216), vec2(300, 64))
+    EGP:egpColor(1, vec(75))
+        
+    EGP:egpText(2, "Bowling Alley", vec2(256, 216))
+    EGP:egpAlign(2, 1, 1)
+    EGP:egpSize(2, 42)
+    
+    drawPin(vec2(128, 384))
+    drawPin(vec2(256, 384))
+    drawPin(vec2(384, 384))
+}
+
+else
+{
+    Amplitude += 5
+    
+    foreach(K, V:number = PinIDs)
+    {
+        EGP:egpAngle(V, -abs(sin(Amplitude)) * 45)
+    }
+    
+    if(Amplitude == 90)
+    {
+        Amplitude = 0
+    }
+}
+
+interval(150)
