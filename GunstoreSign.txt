@@ -1,0 +1,35 @@
+@name Gunstore Sign
+@inputs EGP:wirelink
+@persist Amplitude:number
+
+if(first())
+{
+    entity():createWire(entity():isWeldedTo(), "EGP", "wirelink")
+    EGP:egpClear()
+    
+    EGP:egpCircle(1, vec2(256, 500), vec2(138))
+    EGP:egpColor(1, vec(25))
+    
+    EGP:egpCircle(2, vec2(256, 500), vec2(128))
+    EGP:egpMaterial(2, "entities/weapon_357.png")
+    
+    EGP:egpText(3, "Gunstore", vec2(260, 464))
+    EGP:egpAlign(3, 1, 1)
+    EGP:egpColor(3, vec(128, 0, 128))
+    EGP:egpSize(3, 42)
+    
+    EGP:egpText(4, "Gunstore", vec2(256, 460))
+    EGP:egpAlign(4, 1, 1)
+    EGP:egpSize(4, 42)
+    
+    EGP:egpText(5, "Now Open", vec2(260, 540))
+    EGP:egpAlign(5, 1, 1)
+    EGP:egpColor(5, vec(128, 0, 128))
+    EGP:egpSize(5, 42)
+    
+    EGP:egpText(6, "Now Open", vec2(256, 536))
+    EGP:egpAlign(6, 1, 1)
+    EGP:egpSize(6, 42)
+    
+}
+
